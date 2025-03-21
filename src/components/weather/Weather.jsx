@@ -4,6 +4,22 @@ import { useEffect, useState } from "react";
 
 const Weather = () => {
   const [weather, setWeather] = useState(null);
+  const [coords, setCordinates] = useState(null);
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        setCordinates({
+          lat: position.coords.latitude,
+          lon: position.coords.longitude,
+        });
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }, []);
+  console.log(coords);
 
   useEffect(() => {
     fetch(
