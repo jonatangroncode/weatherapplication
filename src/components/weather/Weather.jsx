@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 const Weather = () => {
   const [weather, setWeather] = useState(null);
   const [coords, setCordinates] = useState(null);
+  const [city, setCity] = useState("");
+  const [searchCity, setSearchCity] = useState(null);
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
@@ -19,11 +21,12 @@ const Weather = () => {
       }
     );
   }, []);
-  console.log(coords);
 
   useEffect(() => {
+    if (!coords) return;
+
     fetch(
-      "https://api.openweathermap.org/data/2.5/weather?q=frankrike&appid=ffd76b07ad6c23883f4dd787b3c0d8f5&units=metric&lang=sv"
+      `https://api.openweathermap.org/data/2.5/weather?lat=${coords.lat}&lon=${coords.lon}&appid=ffd76b07ad6c23883f4dd787b3c0d8f5&units=metric&lang=sv`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -31,10 +34,42 @@ const Weather = () => {
         console.log(data);
       })
       .catch((error) => console.error("Error:", error));
-  }, []);
+    console.log(coords);
+  }, [coords]);
+
+  useEffect(() => {
+    if (!searchCity) return;
+
+    fetch(
+      `https://api.openweathermap.org/data/2.5/weather?q=${searchCity}&appid=ffd76b07ad6c23883f4dd787b3c0d8f5&units=metric&lang=sv`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setWeather(data);
+        console.log(data);
+      })
+      .catch((error) => console.error("Error:", error));
+  }, [searchCity]);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (city.trim() !== "") {
+      setSearchCity(city.trim());
+      setCity("");
+    }
+  };
 
   return (
     <div className="weather">
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Sök Ort, Stad, land.."
+          value={city}
+          onChange={(e) => setCity(e.target.value)}
+        />
+        <button type="submit">Sök</button>
+      </form>
       {weather?.weather?.[0] && (
         <>
           <h2>Väder i {weather.name}</h2>
