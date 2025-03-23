@@ -8,15 +8,11 @@ const Weather = () => {
   const [coords, setCordinates] = useState(null);
   const [city, setCity] = useState("");
   const [searchCity, setSearchCity] = useState(null);
-  const [favorites, setFavorites] = useState([
-    {
-      id: 1,
-      name: "Stockholm",
-      temperature: 20,
-      description: "Kallt",
-      isFavorited: true,
-    },
-  ]);
+  const [favorites, setFavorites] = useState(() => {
+    const savedFavorites = localStorage.getItem("favorites");
+    return savedFavorites ? JSON.parse(savedFavorites) : [];
+  });
+  console.log(favorites);
   const isFavorited = favorites.some((fav) => fav.name === weather?.name);
 
   const starIcon = isFavorited ? starFilled : starEmpty;
@@ -92,6 +88,17 @@ const Weather = () => {
     }
   };
 
+  useEffect(() => {
+    const storedFavorites = localStorage.getItem("favorites");
+    if (storedFavorites) {
+      setFavorites(JSON.parse(storedFavorites));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+  }, [favorites]);
+
   return (
     <>
       <header>
@@ -115,6 +122,10 @@ const Weather = () => {
                   <img src={starIcon} alt="favorit" className="favorite" />
                 </button>
               </div>
+              <p>
+                Uppdaterad: <br />
+                {new Date(weather.dt * 1000).toLocaleString()}
+              </p>
 
               <p>Väder beskrivning: {weather.weather[0].description}</p>
               <p>Temperatur: {weather.main?.temp ?? "Okänd"}°C</p>
