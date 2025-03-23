@@ -88,6 +88,10 @@ const Weather = () => {
     }
   };
 
+  const handleFavoriteSeach = (favName) => {
+    setSearchCity(favName);
+  };
+
   useEffect(() => {
     const storedFavorites = localStorage.getItem("favorites");
     if (storedFavorites) {
@@ -146,7 +150,11 @@ const Weather = () => {
             Dina favoriter <hr />
             <ul>
               {favorites.map((fav) => (
-                <li key={fav.id}>{fav.name}</li>
+                <li key={fav.id}>
+                  <button onClick={() => handleFavoriteSeach(fav.name)}>
+                    {fav.name}
+                  </button>
+                </li>
               ))}
             </ul>
           </h2>
