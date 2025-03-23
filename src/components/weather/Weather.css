@@ -4,8 +4,7 @@ body {
 
 main {
   display: flex;
-  flex-direction: column;
-  height: 100vh;
+  height: wrap;
   justify-content: center;
   align-items: center;
 }
@@ -17,13 +16,23 @@ header {
   text-align: center;
 }
 
+button {
+  margin: 20px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: rgb(4, 106, 106);
+  color: white;
+  cursor: pointer;
+}
+
 .card {
   display: flex;
+  width: 100%;
   flex-direction: column;
   justify-content: center;
   background-color: rgb(28, 226, 160);
   border-radius: 10px;
-  padding: 20px;
+  padding: 80px;
   margin: 20px;
 }
 
@@ -35,4 +44,16 @@ header {
 .card .favorite-button:active {
   transform: none;
   box-shadow: none;
+}
+
+.card .favorite {
+  display: flex;
+  width: 40px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.cardheader {
+  display: flex;
+  justify-content: space-between;
 }

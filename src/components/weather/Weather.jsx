@@ -1,4 +1,3 @@
-import React from "react";
 import "./Weather.css";
 import { useEffect, useState } from "react";
 import starFilled from "../../images/star-filled.png";
@@ -18,14 +17,28 @@ const Weather = () => {
       isFavorited: true,
     },
   ]);
+  const isFavorited = favorites.some((fav) => fav.name === weather?.name);
 
-  let starIcon = favorites.isFavorited ? starFilled : starEmpty;
+  const starIcon = isFavorited ? starFilled : starEmpty;
 
   function toggleFavorite() {
-    setFavorites((prevFavorites) => ({
-      ...prevFavorites,
-      isFavorited: !prevFavorites.isFavorited,
-    }));
+    if (!weather) return;
+    setFavorites((prevFavorites) => {
+      const alreadyFavorited = prevFavorites.some(
+        (fav) => fav.name === weather.name
+      );
+      if (alreadyFavorited) {
+        return prevFavorites.filter((fav) => fav.name !== weather.name);
+      } else {
+        const newFavorite = {
+          id: Date.now(),
+          name: weather.name,
+          temperature: weather.main.temp,
+          description: weather.weather[0].description,
+        };
+        return [...prevFavorites, newFavorite];
+      }
+    });
   }
 
   useEffect(() => {
@@ -94,12 +107,15 @@ const Weather = () => {
       </header>
       <main>
         <article className="card">
-          <button onClick={toggleFavorite} className="favorite-button">
-            <img src={starIcon} alt="favorit" />
-          </button>
           {weather?.weather?.[0] && (
             <>
-              <h2>Väder i {weather.name}</h2>
+              <div className="cardheader">
+                <h2>Väder i {weather.name}</h2>{" "}
+                <button onClick={toggleFavorite} className="favorite-button">
+                  <img src={starIcon} alt="favorit" className="favorite" />
+                </button>
+              </div>
+
               <p>Väder beskrivning: {weather.weather[0].description}</p>
               <p>Temperatur: {weather.main?.temp ?? "Okänd"}°C</p>
               <p>Wind: {weather.wind?.speed ?? "Okänd"}</p>
@@ -108,9 +124,21 @@ const Weather = () => {
                 src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
                 alt={weather.weather[0].description}
               />
-              <button>Mer info</button>
+              <button>
+                Mer info <hr />
+              </button>
             </>
           )}
+        </article>
+        <article className="card">
+          <h2>
+            Dina favoriter <hr />
+            <ul>
+              {favorites.map((fav) => (
+                <li key={fav.id}>{fav.name}</li>
+              ))}
+            </ul>
+          </h2>
         </article>
       </main>
     </>
