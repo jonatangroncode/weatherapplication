@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import starFilled from "../../images/star-filled.png";
 import starEmpty from "../../images/star-empty.png";
 import WeatherCard from "../weathercard/WeatherCard";
+import FavoriteList from "../favoritelist/FavoriteList";
 
 const Weather = () => {
   const [weather, setWeather] = useState(null);
@@ -107,6 +108,15 @@ const Weather = () => {
   return (
     <>
       <header>
+        <a href="/">
+          {" "}
+          <img
+            className="logo"
+            src="../src/images/logoweather.png"
+            alt="cloud and sun"
+          />
+        </a>
+
         <form onSubmit={handleSubmit}>
           <input
             type="text"
@@ -124,20 +134,10 @@ const Weather = () => {
           starIcon={starIcon}
         />
 
-        <article className="card">
-          <h2>
-            Dina favoriter <hr />
-            <ul>
-              {favorites.map((fav) => (
-                <li key={fav.id}>
-                  <button onClick={() => handleFavoriteSeach(fav.name)}>
-                    {fav.name}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </h2>
-        </article>
+        <FavoriteList
+          favorites={favorites}
+          handleFavoriteSeach={handleFavoriteSeach}
+        />
       </main>
     </>
   );
