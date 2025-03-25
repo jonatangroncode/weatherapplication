@@ -5,8 +5,9 @@ import starEmpty from "../../images/star-empty.png";
 import WeatherCard from "../weathercard/WeatherCard";
 import FavoriteList from "../favoritelist/FavoriteList";
 import {
-  fetchWeaterByCoord,
+  fetchWeatherByCoord,
   fetchWeatherByCity,
+  fetchWeaterForecastByCity,
 } from "../../services/Services";
 
 const Weather = () => {
@@ -14,11 +15,11 @@ const Weather = () => {
   const [coords, setCordinates] = useState(null);
   const [city, setCity] = useState("");
   const [searchCity, setSearchCity] = useState(null);
+  const [weatherForecastReport, setWeatherForecastReport] = useState(null);
   const [favorites, setFavorites] = useState(() => {
     const savedFavorites = localStorage.getItem("favorites");
     return savedFavorites ? JSON.parse(savedFavorites) : [];
   });
-  console.log(favorites);
   const isFavorited = favorites.some((fav) => fav.name === weather?.name);
 
   const starIcon = isFavorited ? starFilled : starEmpty;
@@ -60,7 +61,7 @@ const Weather = () => {
   useEffect(() => {
     if (!coords) return;
 
-    fetchWeaterByCoord(coords.lat, coords.lon)
+    fetchWeatherByCoord(coords.lat, coords.lon)
       .then(setWeather)
       .catch((error) => console.error("Error:", error));
     console.log(coords);
@@ -72,7 +73,13 @@ const Weather = () => {
     fetchWeatherByCity(searchCity)
       .then(setWeather)
       .catch((error) => console.error("Error:", error));
+
+    fetchWeaterForecastByCity(searchCity)
+      .then(setWeatherForecastReport)
+      .catch((error) => console.error("Error:", error));
   }, [searchCity]);
+
+  console.log(weatherForecastReport);
 
   const handleSubmit = (event) => {
     event.preventDefault();
