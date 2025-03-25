@@ -4,6 +4,10 @@ import starFilled from "../../images/star-filled.png";
 import starEmpty from "../../images/star-empty.png";
 import WeatherCard from "../weathercard/WeatherCard";
 import FavoriteList from "../favoritelist/FavoriteList";
+import {
+  fetchWeaterByCoord,
+  fetchWeatherByCity,
+} from "../../services/Services";
 
 const Weather = () => {
   const [weather, setWeather] = useState(null);
@@ -56,14 +60,8 @@ const Weather = () => {
   useEffect(() => {
     if (!coords) return;
 
-    fetch(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${coords.lat}&lon=${coords.lon}&appid=ffd76b07ad6c23883f4dd787b3c0d8f5&units=metric&lang=sv`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        setWeather(data);
-        console.log(data);
-      })
+    fetchWeaterByCoord(coords.lat, coords.lon)
+      .then(setWeather)
       .catch((error) => console.error("Error:", error));
     console.log(coords);
   }, [coords]);
@@ -71,14 +69,8 @@ const Weather = () => {
   useEffect(() => {
     if (!searchCity) return;
 
-    fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${searchCity}&appid=ffd76b07ad6c23883f4dd787b3c0d8f5&units=metric&lang=sv`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        setWeather(data);
-        console.log(data);
-      })
+    fetchWeatherByCity(searchCity)
+      .then(setWeather)
       .catch((error) => console.error("Error:", error));
   }, [searchCity]);
 

@@ -33,9 +33,11 @@ button {
   flex-direction: column;
   justify-content: center;
   background-color: rgb(28, 226, 160);
+  background: linear-gradient(to right, rgb(28, 226, 160), rgb(121, 121, 247));
   border-radius: 10px;
   padding: 80px;
   margin: 20px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 .card .favorite-button {
