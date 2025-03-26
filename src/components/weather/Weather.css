@@ -4,6 +4,14 @@ body {
 
 main {
   display: flex;
+  flex-direction: column;
+  height: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.startsection {
+  display: flex;
   height: wrap;
   justify-content: center;
   align-items: center;
@@ -30,6 +38,20 @@ button {
   display: flex;
   max-width: 300px;
   width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgb(28, 226, 160);
+  background: linear-gradient(to right, rgb(28, 226, 160), rgb(121, 121, 247));
+  border-radius: 10px;
+  padding: 80px;
+  margin: 20px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.forecastcard {
+  display: flex;
+  width: 100%;
+  max-width: 900px;
   flex-direction: column;
   justify-content: center;
   background-color: rgb(28, 226, 160);
