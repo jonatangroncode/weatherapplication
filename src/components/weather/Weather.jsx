@@ -8,6 +8,7 @@ import {
   fetchWeatherByCoord,
   fetchWeatherByCity,
   fetchWeaterForecastByCity,
+  fetchWeaterForecastByCoord,
 } from "../../services/Services";
 
 const Weather = () => {
@@ -69,6 +70,10 @@ const Weather = () => {
 
     fetchWeatherByCoord(coords.lat, coords.lon)
       .then(setWeather)
+      .catch((error) => console.error("Error:", error));
+
+    fetchWeaterForecastByCoord(coords.lat, coords.lon)
+      .then(setWeatherForecastReport)
       .catch((error) => console.error("Error:", error));
     console.log(coords);
   }, [coords]);
@@ -162,29 +167,31 @@ const Weather = () => {
         <option value="18:00:00">18:00</option>
         <option value="21:00:00">21:00</option>
       </select>
+      <article>
+        {" "}
+        <div className="accordion">
+          {filterdForecast.map((day) => (
+            <div key={day.dt} className="accordion-item">
+              <h3>{new Date(day.dt * 1000).toLocaleDateString()}</h3>
+              <img
+                className="report-icon"
+                src={`https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`}
+                alt={day.weather[0].description}
+              />
+              <p>
+                Temperatur: {day.main.temp}°C <br />
+                Väder: {day.weather[0].description}
+              </p>
 
-      <div className="accordion">
-        {filterdForecast.map((day) => (
-          <div key={day.dt} className="accordion-item">
-            <h3>{new Date(day.dt * 1000).toLocaleDateString()}</h3>
-            <img
-              className="report-icon"
-              src={`https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`}
-              alt={day.weather[0].description}
-            />
-            <p>
-              Temperatur: {day.main.temp}°C <br />
-              Väder: {day.weather[0].description}
-            </p>
-
-            <p>
-              {" "}
-              Min/max Temp: {day.main.temp_min}/{day.main.temp_max}°C <br />
-            </p>
-            <div>+</div>
-          </div>
-        ))}
-      </div>
+              <p>
+                {" "}
+                Temp Min/Max: {day.main.temp_min} / {day.main.temp_max}°C <br />
+              </p>
+              <div>+</div>
+            </div>
+          ))}
+        </div>
+      </article>
     </>
   );
 };

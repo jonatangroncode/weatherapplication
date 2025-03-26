@@ -107,6 +107,8 @@ form {
 .accordion-item {
   display: flex;
   flex-direction: row;
+  align-items: center;
+
   width: 800px;
   justify-content: space-between;
 }

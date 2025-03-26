@@ -10,6 +10,14 @@ export const fetchWeatherByCoord = async (lat, lon) => {
         return await res.json();
 }
 
+export const fetchWeaterForecastByCoord = async (lat, lon) => {
+    const res = await fetch(
+        `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric&lang=sv`
+    )
+    if (!res.ok) throw new Error("Kunde inte hämta väderdata från din plats")
+        return await res.json();
+}
+
 
 export const fetchWeatherByCity = async (city) => {
     const res = await fetch(
@@ -26,3 +34,4 @@ export const fetchWeaterForecastByCity = async (city) => {
     if (!res.ok) throw new Error("Kunde inte hämta väderrapport för din stad")
         return await res.json();
 }
+
