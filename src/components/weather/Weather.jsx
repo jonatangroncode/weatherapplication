@@ -16,6 +16,7 @@ const Weather = () => {
   const [city, setCity] = useState("");
   const [searchCity, setSearchCity] = useState(null);
   const [weatherForecastReport, setWeatherForecastReport] = useState(null);
+  const [selectedTime, setSelectedTime] = useState("12:00:00");
   const [favorites, setFavorites] = useState(() => {
     const savedFavorites = localStorage.getItem("favorites");
     return savedFavorites ? JSON.parse(savedFavorites) : [];
@@ -23,6 +24,11 @@ const Weather = () => {
   const isFavorited = favorites.some((fav) => fav.name === weather?.name);
 
   const starIcon = isFavorited ? starFilled : starEmpty;
+
+  const filterdForecast =
+    weatherForecastReport?.list?.filter((item) =>
+      selectedTime ? item.dt_txt.includes(selectedTime) : true
+    ) || [];
 
   function toggleFavorite() {
     if (!weather) return;
@@ -138,6 +144,47 @@ const Weather = () => {
           handleFavoriteSeach={handleFavoriteSeach}
         />
       </main>
+
+      <h2>Väder prognos 5 dagar fram: </h2>
+      <h3>Välj tidpunkt:</h3>
+      <select
+        name=""
+        id=""
+        value={selectedTime}
+        onChange={(e) => setSelectedTime(e.target.value)}
+      >
+        <option value="00:00:00">00:00</option>
+        <option value="03:00:00">03:00</option>
+        <option value="06:00:00">06:00</option>
+        <option value="09:00:00">09:00</option>
+        <option value="12:00:00">12:00</option>
+        <option value="15:00:00">15:00</option>
+        <option value="18:00:00">18:00</option>
+        <option value="21:00:00">21:00</option>
+      </select>
+
+      <div className="accordion">
+        {filterdForecast.map((day) => (
+          <div key={day.dt} className="accordion-item">
+            <h3>{new Date(day.dt * 1000).toLocaleDateString()}</h3>
+            <img
+              className="report-icon"
+              src={`https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`}
+              alt={day.weather[0].description}
+            />
+            <p>
+              Temperatur: {day.main.temp}°C <br />
+              Väder: {day.weather[0].description}
+            </p>
+
+            <p>
+              {" "}
+              Min/max Temp: {day.main.temp_min}/{day.main.temp_max}°C <br />
+            </p>
+            <div>+</div>
+          </div>
+        ))}
+      </div>
     </>
   );
 };

@@ -95,3 +95,25 @@ form {
   background: linear-gradient(rgb(212, 176, 101), rgb(248, 206, 118));
   color: black;
 }
+
+.accordion {
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.accordion-item {
+  display: flex;
+  flex-direction: row;
+  width: 800px;
+  justify-content: space-between;
+}
+
+img .report-icon  {
+  margin-right: 10px;
+  cursor: pointer;
+  height: 40px;
+  width: 40px;
+}

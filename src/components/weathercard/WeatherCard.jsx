@@ -13,7 +13,7 @@ const WeatherCard = ({ weather, onToggleFavorite, starIcon }) => {
             </button>
           </div>
           <p>
-            Uppdaterad: <br />
+            Senaste prognos: <br />
             {new Date(weather.dt * 1000).toLocaleString()}
           </p>
 
