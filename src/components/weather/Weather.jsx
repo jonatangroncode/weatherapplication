@@ -5,6 +5,7 @@ import starEmpty from "../../images/star-empty.png";
 import WeatherCard from "../weathercard/WeatherCard";
 import FavoriteList from "../favoritelist/FavoriteList";
 import ForecastList from "../forecastlist/ForecastList";
+import Header from "../header/Header";
 import {
   fetchWeatherByCoord,
   fetchWeatherByCity,
@@ -106,38 +107,12 @@ const Weather = () => {
   };
 
   useEffect(() => {
-    const storedFavorites = localStorage.getItem("favorites");
-    if (storedFavorites) {
-      setFavorites(JSON.parse(storedFavorites));
-    }
-  }, []);
-
-  useEffect(() => {
     localStorage.setItem("favorites", JSON.stringify(favorites));
   }, [favorites]);
 
   return (
     <>
-      <header>
-        <a href="/">
-          {" "}
-          <img
-            className="logo"
-            src="../src/images/logoweather.png"
-            alt="cloud and sun"
-          />
-        </a>
-
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            placeholder="Sök Ort, Stad, land.."
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-          />
-          <button type="submit">Sök</button>
-        </form>
-      </header>
+      <Header handleSubmit={handleSubmit} city={city} setCity={setCity} />
       <main>
         <section className="startsection">
           <WeatherCard
