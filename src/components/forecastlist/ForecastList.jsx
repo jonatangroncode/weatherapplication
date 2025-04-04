@@ -7,6 +7,7 @@ const ForecastList = ({ selectedTime, filterdForecast, setSelectedTime }) => {
       <h2>Väder prognos 5 dagar fram: </h2>
       <h3>Välj tidpunkt:</h3>
       <select
+        className="time-select"
         name=""
         id=""
         value={selectedTime}
@@ -39,7 +40,6 @@ const ForecastList = ({ selectedTime, filterdForecast, setSelectedTime }) => {
               {" "}
               Temp Min/Max: {day.main.temp_min} / {day.main.temp_max}°C <br />
             </p>
-            <div>+</div>
           </div>
         ))}{" "}
       </div>

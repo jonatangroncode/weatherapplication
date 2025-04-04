@@ -6,6 +6,7 @@ import WeatherCard from "../weathercard/WeatherCard";
 import FavoriteList from "../favoritelist/FavoriteList";
 import ForecastList from "../forecastlist/ForecastList";
 import Header from "../header/Header";
+
 import {
   fetchWeatherByCoord,
   fetchWeatherByCity,
@@ -113,7 +114,7 @@ const Weather = () => {
   return (
     <>
       <Header handleSubmit={handleSubmit} city={city} setCity={setCity} />
-      <main>
+      <main className="main-grid">
         <section className="startsection">
           <WeatherCard
             weather={weather}

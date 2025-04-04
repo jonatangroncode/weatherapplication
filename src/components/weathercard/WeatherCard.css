@@ -1,0 +1,13 @@
+.cardheader {
+  display: flex;
+  gap: 30px;
+}
+
+span {
+  font-weight: normal;
+}
+
+.weather-icon {
+  width: 300px;
+  height: 300px;
+}

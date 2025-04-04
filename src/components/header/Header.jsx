@@ -1,4 +1,5 @@
 import React from "react";
+import "./Header.css";
 
 const Header = ({ handleSubmit, city, setCity }) => {
   return (
@@ -21,6 +22,7 @@ const Header = ({ handleSubmit, city, setCity }) => {
         />
         <button type="submit">Sök</button>
       </form>
+      <button className="fav-btn">Favoriter</button>
     </header>
   );
 };

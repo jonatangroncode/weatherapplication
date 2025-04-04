@@ -2,19 +2,40 @@ body {
   background-color: aquamarine;
 }
 
-main {
+.main-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: auto auto;
+  gap: 1rem;
+  padding: 2rem;
+}
+
+article {
   display: flex;
   flex-direction: column;
-  height: wrap;
   justify-content: center;
   align-items: center;
+  background-color: transparent;
+  font-size: 1.5rem;
+}
+
+.card {
+  background: linear-gradient(135deg, #50e3c2, #7f7fd5);
+  padding: 4rem;
+  width: 100%;
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  background: linear-gradient(to right, rgb(28, 226, 160), rgb(121, 121, 247));
+  border-radius: 10px;
+  margin: 20px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 .startsection {
   display: flex;
-  height: wrap;
+  width: 100%;
   justify-content: center;
-  align-items: center;
 }
 
 header {
@@ -22,7 +43,6 @@ header {
   background-color: transparent;
   color: white;
   padding: 10px;
-  text-align: center;
 }
 
 button {
@@ -34,32 +54,12 @@ button {
   cursor: pointer;
 }
 
-.card {
-  display: flex;
-  max-width: 300px;
-  width: 100%;
-  flex-direction: column;
-  justify-content: center;
-  background-color: rgb(28, 226, 160);
-  background: linear-gradient(to right, rgb(28, 226, 160), rgb(121, 121, 247));
-  border-radius: 10px;
-  padding: 80px;
-  margin: 20px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.8);
-}
-
 .forecastcard {
-  display: flex;
-  width: 100%;
-  max-width: 900px;
-  flex-direction: column;
-  justify-content: center;
-  background-color: rgb(28, 226, 160);
-  background: linear-gradient(to right, rgb(28, 226, 160), rgb(121, 121, 247));
-  border-radius: 10px;
-  padding: 80px;
-  margin: 20px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.8);
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, #50e3c2, #7f7fd5);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .card .favorite-button {
@@ -78,11 +78,6 @@ button {
   display: flex;
   width: 60px;
   cursor: pointer;
-}
-
-.cardheader {
-  display: flex;
-  justify-content: space-between;
 }
 
 li {
@@ -118,26 +113,12 @@ form {
   color: black;
 }
 
-.accordion {
-  display: flex;
-  flex-direction: column;
-  background-color: transparent;
-  padding: 20px;
-  margin-bottom: 20px;
-}
+@media (max-width: 768px) {
+  .main-grid {
+    grid-template-columns: 1fr;
+  }
 
-.accordion-item {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-
-  width: 800px;
-  justify-content: space-between;
-}
-
-img .report-icon  {
-  margin-right: 10px;
-  cursor: pointer;
-  height: 40px;
-  width: 40px;
+  .forecastcard {
+    grid-column: 1; /* Behöver inte spänna över något */
+  }
 }

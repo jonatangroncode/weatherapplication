@@ -1,0 +1,38 @@
+.accordion {
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
+  gap: 20px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.accordion-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.time-select {
+  width: 400px;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  color: #333;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.time-select:hover {
+  border-color: #007bff;
+}
+
+.time-select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}

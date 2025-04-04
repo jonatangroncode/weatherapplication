@@ -1,4 +1,5 @@
 import React from "react";
+import "./WeatherCard.css";
 
 const WeatherCard = ({ weather, onToggleFavorite, starIcon }) => {
   if (!weather?.weather?.[0]) return null;
@@ -14,20 +15,26 @@ const WeatherCard = ({ weather, onToggleFavorite, starIcon }) => {
           </div>
           <p>
             Senaste prognos: <br />
-            {new Date(weather.dt * 1000).toLocaleString()}
+            <span>{new Date(weather.dt * 1000).toLocaleString()}</span>
           </p>
 
-          <p>Väder beskrivning: {weather.weather[0].description}</p>
-          <p>Temperatur: {weather.main?.temp ?? "Okänd"}°C</p>
-          <p>Wind: {weather.wind?.speed ?? "Okänd"}</p>
+          <p>
+            Väder beskrivning: <br />
+            <span>{weather.weather[0].description}</span>
+          </p>
+          <p>
+            Temperatur: <span>{weather.main?.temp ?? "Okänd"}°C</span>
+          </p>
+          <p>
+            Wind:
+            <span> {weather.wind?.speed ?? "Okänd"}</span>
+          </p>
 
           <img
+            className="weather-icon"
             src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
             alt={weather.weather[0].description}
           />
-          <button>
-            Mer info <hr />
-          </button>
         </>
       )}
     </article>
