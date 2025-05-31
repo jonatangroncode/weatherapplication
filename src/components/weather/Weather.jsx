@@ -54,7 +54,7 @@ const Weather = () => {
     });
   }
 
-  useEffect(() => {
+  const getMyLocation = () => {
     navigator.geolocation.getCurrentPosition(
       (position) => {
         setCordinates({
@@ -66,6 +66,10 @@ const Weather = () => {
         console.error(error);
       }
     );
+  };
+
+  useEffect(() => {
+    getMyLocation();
   }, []);
 
   useEffect(() => {
@@ -113,7 +117,12 @@ const Weather = () => {
 
   return (
     <>
-      <Header handleSubmit={handleSubmit} city={city} setCity={setCity} />
+      <Header
+        handleSubmit={handleSubmit}
+        city={city}
+        setCity={setCity}
+        getMyLocation={getMyLocation}
+      />
       <main className="main-grid">
         <section className="startsection">
           <WeatherCard

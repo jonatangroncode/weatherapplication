@@ -1,7 +1,7 @@
 import React from "react";
 import "./Header.css";
 
-const Header = ({ handleSubmit, city, setCity }) => {
+const Header = ({ handleSubmit, city, setCity, getMyLocation }) => {
   return (
     <header>
       <a href="/">
@@ -23,10 +23,7 @@ const Header = ({ handleSubmit, city, setCity }) => {
         <button type="submit">Sök</button>
       </form>
       <div className="bookmark-btn">
-        <button
-          className="fav-btn"
-          onClick={() => (window.location.hash = "#location")}
-        >
+        <button className="fav-btn" onClick={getMyLocation}>
           Min plats 📍
         </button>
         <button

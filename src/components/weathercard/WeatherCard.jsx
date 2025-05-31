@@ -4,7 +4,7 @@ import "./WeatherCard.css";
 const WeatherCard = ({ weather, onToggleFavorite, starIcon }) => {
   if (!weather?.weather?.[0]) return null;
   return (
-    <article className="card">
+    <article className="card" id="location">
       {weather?.weather?.[0] && (
         <>
           <div className="cardheader">
