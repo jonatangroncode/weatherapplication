@@ -6,6 +6,7 @@ import WeatherCard from "../weathercard/WeatherCard";
 import FavoriteList from "../favoritelist/FavoriteList";
 import ForecastList from "../forecastlist/ForecastList";
 import Header from "../header/Header";
+import ScrollToTopButton from "../ScrollToTopButton/ScrollToTopButton";
 
 import {
   fetchWeatherByCoord,
@@ -160,6 +161,7 @@ const Weather = () => {
           setSelectedTime={setSelectedTime}
         />
       </main>
+      <ScrollToTopButton />
     </>
   );
 };
