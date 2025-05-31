@@ -11,3 +11,20 @@ span {
   width: 300px;
   height: 300px;
 }
+
+.card {
+  padding: 2rem;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .card {
+    padding: 1rem;
+  }
+
+  .weather-icon {
+    width: 150px;
+    height: 150px;
+  }
+}

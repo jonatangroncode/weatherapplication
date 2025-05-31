@@ -1,14 +1,55 @@
 header {
   display: flex;
-  background-color: transparent;
-  color: white;
-  padding: 10px;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
 }
 
 .fav-btn {
-  background: linear-gradient(rgb(212, 176, 101), rgb(248, 206, 118));
-  color: black;
+  height: 100%;
+  width: 200px;
+  background: rgb(42, 42, 144);
+  color: goldenrod;
   border-radius: 30px;
   font-size: 1rem;
   cursor: pointer;
+}
+
+.bookmark-btn {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .logo {
+    width: 80px;
+    height: 80px;
+  }
+
+  form {
+    flex-direction: column;
+  }
+
+  form input {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  .fav-btn {
+    width: 100%;
+  }
 }

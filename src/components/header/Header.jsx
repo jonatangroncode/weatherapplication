@@ -22,7 +22,11 @@ const Header = ({ handleSubmit, city, setCity }) => {
         />
         <button type="submit">Sök</button>
       </form>
-      <button className="fav-btn">Favoriter</button>
+      <div className="bookmark-btn">
+        <button className="fav-btn">Min plats 📍</button>
+        <button className="fav-btn">Favoriter ⭐️</button>
+        <button className="fav-btn">5 dagars prognos 🗓️</button>
+      </div>
     </header>
   );
 };

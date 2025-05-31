@@ -4,8 +4,7 @@ body {
 
 .main-grid {
   display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  grid-template-rows: auto auto;
+  grid-template-columns: repeat(1, 2fr);
   gap: 1rem;
   padding: 2rem;
 }
@@ -113,12 +112,25 @@ form {
   color: black;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 810px) {
   .main-grid {
     grid-template-columns: 1fr;
   }
 
   .forecastcard {
     grid-column: 1; /* Behöver inte spänna över något */
+  }
+  .startsection {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-grid {
+    grid-template-columns: 1fr;
+    padding: 1rem;
   }
 }

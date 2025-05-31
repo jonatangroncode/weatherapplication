@@ -4,7 +4,7 @@ const FavoriteList = ({ favorites, handleFavoriteSeach }) => {
   return (
     <article className="card">
       <h2>
-        Dina favoriter : <hr />
+        Dina favoriter <hr />
         <ul>
           {favorites.map((fav) => (
             <li key={fav.id}>
