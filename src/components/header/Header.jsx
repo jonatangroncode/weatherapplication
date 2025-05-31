@@ -1,16 +1,13 @@
 import React from "react";
 import "./Header.css";
+import logo from "../../images/logoweather.png";
 
 const Header = ({ handleSubmit, city, setCity, getMyLocation }) => {
   return (
     <header>
       <a href="/">
         {" "}
-        <img
-          className="logo"
-          src="../src/images/logoweather.png"
-          alt="cloud and sun"
-        />
+        <img className="logo" src={logo} alt="cloud and sun" />
       </a>
 
       <form onSubmit={handleSubmit}>
