@@ -1,3 +1,7 @@
 body {
   background-color: aquamarine;
 }
+
+html {
+  scroll-behavior: smooth;
+}

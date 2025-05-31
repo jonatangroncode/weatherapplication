@@ -23,7 +23,13 @@ const Header = ({ handleSubmit, city, setCity, getMyLocation }) => {
         <button type="submit">Sök</button>
       </form>
       <div className="bookmark-btn">
-        <button className="fav-btn" onClick={getMyLocation}>
+        <button
+          className="fav-btn"
+          onClick={() => {
+            window.history.replaceState(null, null, " ");
+            getMyLocation();
+          }}
+        >
           Min plats 📍
         </button>
         <button

@@ -115,6 +115,24 @@ const Weather = () => {
     localStorage.setItem("favorites", JSON.stringify(favorites));
   }, [favorites]);
 
+  useEffect(() => {
+    if (weatherForecastReport && window.location.hash === "#forecast") {
+      const el = document.querySelector("#forecast");
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [weatherForecastReport]);
+
+  useEffect(() => {
+    if (favorites.length > 0 && window.location.hash === "#favorites") {
+      const el = document.querySelector("#favorites");
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [favorites]);
+
   return (
     <>
       <Header
