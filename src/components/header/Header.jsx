@@ -20,7 +20,9 @@ const Header = ({ handleSubmit, city, setCity, getMyLocation }) => {
           value={city}
           onChange={(e) => setCity(e.target.value)}
         />
-        <button type="submit">Sök</button>
+        <button className="searchbtn" type="submit">
+          Sök
+        </button>
       </form>
       <div className="bookmark-btn">
         <button

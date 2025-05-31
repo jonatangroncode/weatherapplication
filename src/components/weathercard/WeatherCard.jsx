@@ -1,10 +1,10 @@
 import React from "react";
 import "./WeatherCard.css";
 
-const WeatherCard = ({ weather, onToggleFavorite, starIcon }) => {
+const WeatherCard = ({ weather, onToggleFavorite, starIcon, highlight }) => {
   if (!weather?.weather?.[0]) return null;
   return (
-    <article className="card" id="location">
+    <article className={`card ${highlight ? "highlight" : ""}`} id="weather">
       {weather?.weather?.[0] && (
         <>
           <div className="cardheader">

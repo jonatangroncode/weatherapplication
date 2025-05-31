@@ -7,6 +7,14 @@ header {
   padding: 1rem;
 }
 
+input {
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  width: 200px;
+}
+
 .fav-btn {
   height: 100%;
   width: 200px;
@@ -14,7 +22,22 @@ header {
   color: goldenrod;
   border-radius: 30px;
   font-size: 1rem;
+  box-shadow: 2px 2px 10px #19191a;
   cursor: pointer;
+  transition: all 0.1s ease-in-out;
+}
+
+.searchbtn {
+  background: rgb(4, 106, 106);
+  color: white;
+  border-radius: 30px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.fav-btn:hover {
+  background: rgb(47, 19, 230);
 }
 
 .bookmark-btn {

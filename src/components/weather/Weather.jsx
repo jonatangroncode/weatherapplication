@@ -22,6 +22,8 @@ const Weather = () => {
   const [searchCity, setSearchCity] = useState(null);
   const [weatherForecastReport, setWeatherForecastReport] = useState(null);
   const [selectedTime, setSelectedTime] = useState("12:00:00");
+  const [highlightCard, setHighlightCard] = useState(false);
+
   const [favorites, setFavorites] = useState(() => {
     const savedFavorites = localStorage.getItem("favorites");
     return savedFavorites ? JSON.parse(savedFavorites) : [];
@@ -62,6 +64,8 @@ const Weather = () => {
           lat: position.coords.latitude,
           lon: position.coords.longitude,
         });
+        setHighlightCard(true);
+        setTimeout(() => setHighlightCard(false), 1500);
       },
       (error) => {
         console.error(error);
@@ -148,6 +152,7 @@ const Weather = () => {
             weather={weather}
             onToggleFavorite={toggleFavorite}
             starIcon={starIcon}
+            highlight={highlightCard}
           />
 
           <FavoriteList

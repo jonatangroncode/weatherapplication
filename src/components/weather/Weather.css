@@ -112,6 +112,12 @@ form {
   color: black;
 }
 
+.card.highlight {
+  border: 3px solid gold;
+  box-shadow: 0 0 20px gold;
+  transition: all 0.5s ease-in-out;
+}
+
 @media (max-width: 810px) {
   .main-grid {
     grid-template-columns: 1fr;
