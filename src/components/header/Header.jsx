@@ -23,9 +23,25 @@ const Header = ({ handleSubmit, city, setCity }) => {
         <button type="submit">Sök</button>
       </form>
       <div className="bookmark-btn">
-        <button className="fav-btn">Min plats 📍</button>
-        <button className="fav-btn">Favoriter ⭐️</button>
-        <button className="fav-btn">5 dagars prognos 🗓️</button>
+        <button
+          className="fav-btn"
+          onClick={() => (window.location.hash = "#location")}
+        >
+          Min plats 📍
+        </button>
+        <button
+          className="fav-btn"
+          onClick={() => (window.location.hash = "#favorites")}
+        >
+          {" "}
+          Gå till favoriter ⭐️
+        </button>
+        <button
+          className="fav-btn"
+          onClick={() => (window.location.hash = "#forecast")}
+        >
+          Gå till prognos 🗓️
+        </button>
       </div>
     </header>
   );

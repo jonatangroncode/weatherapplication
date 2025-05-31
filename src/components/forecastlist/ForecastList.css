@@ -15,7 +15,11 @@
   width: 100%;
 }
 
-.time-select {
+.forecastcard {
+  margin: 10px;
+}
+
+.forecast .time-select {
   width: 400px;
   padding: 10px;
   font-size: 16px;

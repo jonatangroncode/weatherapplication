@@ -2,7 +2,7 @@ import React from "react";
 
 const FavoriteList = ({ favorites, handleFavoriteSeach }) => {
   return (
-    <article className="card">
+    <article className="card" id="favorites">
       <h2>
         Dina favoriter <hr />
         <ul>

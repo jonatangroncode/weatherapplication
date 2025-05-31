@@ -3,7 +3,7 @@ import "./ForecastList.css";
 
 const ForecastList = ({ selectedTime, filterdForecast, setSelectedTime }) => {
   return (
-    <article className="forecastcard">
+    <article className="forecastcard" id="forecast">
       <h2>Väder prognos 5 dagar fram: </h2>
       <h3>Välj tidpunkt:</h3>
       <select
