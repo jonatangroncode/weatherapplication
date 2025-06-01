@@ -1,12 +1,43 @@
-# React + Vite
+# 🌦️ Väderapp
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+En modern väderapplikation byggd med **React** och **Vite**, som visar väderprognoser för valda städer, orter och länder samt användarens plats. Appen använder **OpenWeather API** och innehåller favorithantering, väderprognos 5 dagar framåt, samt responsiv design.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Demo
 
-## Expanding the ESLint configuration
+👉 [Live Demo på Vercel](https://weatherapplication-git-main-jonatans-projects-451a8ed6.vercel.app/)
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🧰 Tekniker
+
+- **React** – komponentbaserad frontend
+- **Vite** – ultrasnabb utvecklingsmiljö och build
+- **OpenWeather API** – hämtar aktuella väderdata & prognos
+- **JavaScript (ES6+)**
+- **Fetch API** – hantering av asynkrona API-anrop
+- **Geolocation API** – visar väder för användarens plats
+- **LocalStorage** – lagrar favoriter
+- **Responsive Design** – anpassar sig till mobil, tablet och desktop
+- **CSS (modulärt uppbyggd)** – animeringar, gradients, grid & flex
+
+---
+
+## 🧪 Funktioner
+
+- 🔍 Sök på stad, ort eller land
+- 📍 Hämta väder för din nuvarande plats
+- ⭐ Lägg till/stjärnmarkera favoriter
+- 📅 Se 5-dygnsprognos för utvalda tider
+- 📱 Responsiv layout med mjuk färgpalett och enkel navigation
+
+---
+
+## 📦 Installation & utveckling
+
+```bash
+git clone https://github.com/jonatangroncode/weatherapplication.git
+cd weatherapplication
+npm install
+npm run dev
